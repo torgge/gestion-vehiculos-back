@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "43c35dce-1d9b-4b4a-9751-29ae685b003b",
+		"name": "Gestión de Vehículos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USUARIOS - PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"situacion\": \"ACTIVO\",\n        \"nombre\": \"Caballero\",\n        \"tipoUsuario\": \"ADMINISTRADOR\",\n        \"login\":\"2323\",\n        \"contrasena\":\"132123\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/f152bcd0-1cb1-4c4d-8d56-57db3fa55d47",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"f152bcd0-1cb1-4c4d-8d56-57db3fa55d47"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS - GET ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS - DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/92584397-9225-4b14-84f5-18c554a861da",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"92584397-9225-4b14-84f5-18c554a861da"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS - GET BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/92584397-9225-4b14-84f5-18c554a861da",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"92584397-9225-4b14-84f5-18c554a861da"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS - POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"situacion\": \"ACTIVO\",\n    \"nombre\": \"JONAS\",\n    \"tipoUsuario\": \"USUARIO\",\n    \"contrasena\": \"132123\",\n    \"login\": \"2323\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
