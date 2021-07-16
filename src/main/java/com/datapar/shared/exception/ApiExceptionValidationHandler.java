@@ -8,13 +8,13 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class UsuarioExceptionValidationHandler implements ExceptionMapper<CustomException> {
+public class ApiExceptionValidationHandler implements ExceptionMapper<ApiException> {
 
     @Inject
     Logger logger;
 
     @Override
-    public Response toResponse(CustomException e) {
+    public Response toResponse(ApiException e) {
         logger.info("Handle UsuarioValidationException");
 
         return Response.status(Response.Status.BAD_REQUEST).entity(e.getLocalizedMessage()).build();

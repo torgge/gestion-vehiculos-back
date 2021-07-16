@@ -2,16 +2,16 @@ package com.datapar.shared.exception;
 
 import java.io.Serializable;
 
-public class CustomException extends Exception implements Serializable {
+public class ApiException extends Exception implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public CustomException() {
+    public ApiException() {
         super();
     }
-    public CustomException(String msg)   {
+    public ApiException(String msg)   {
         super(msg);
     }
-    public CustomException(String msg, Exception e)  {
+    public ApiException(String msg, Exception e)  {
         super(msg, e);
     }
 }

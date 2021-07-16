@@ -1,8 +1,9 @@
 package com.datapar.model;
 
 import com.datapar.shared.enums.TipoServicio;
-import lombok.Builder;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -10,7 +11,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@Builder
+@SuperBuilder
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@AllArgsConstructor
+@NoArgsConstructor
 public class Servicio {
     @NotBlank(message="Usuario no puede ser vacio")
     private Usuario usuario;

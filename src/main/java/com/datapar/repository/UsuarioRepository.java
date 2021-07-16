@@ -3,7 +3,7 @@ package com.datapar.repository;
 import com.datapar.model.Usuario;
 import com.datapar.shared.enums.Situacion;
 import com.datapar.shared.enums.TipoUsuario;
-import com.datapar.shared.exception.CustomException;
+import com.datapar.shared.exception.ApiException;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.validation.Valid;
@@ -14,62 +14,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @ApplicationScoped
-public class UsuarioRepository {
+public class UsuarioRepository implements IBaseRepository<Usuario> {
 
     private final List<Usuario> usuarios;
-
-    public List<Usuario> getAll() {
-        return usuarios.stream()
-                .filter(u -> u.getSituacion().equals(Situacion.ACTIVO))
-                .collect(Collectors.toList());
-    }
-
-    public Optional<Usuario> getById(UUID id) {
-        return usuarios.stream()
-                .filter(u -> u.getId().equals(id))
-                .findFirst();
-    }
-
-    public Usuario save(@Valid Usuario usuario) throws Exception {
-        Optional<Usuario> usuarioExistente = usuarios.stream()
-                .filter(u -> u.getId().equals(usuario.getId()) &&
-                        u.getLogin().equals(usuario.getNombre()))
-                .findFirst();
-
-        if (usuarioExistente.isPresent()) throw new CustomException("Usuario con el mismo nobre o id yá existe");
-
-        usuario.setId(UUID.randomUUID());
-        usuarios.add(usuario);
-
-        return usuario;
-    }
-
-    public Usuario update(UUID id, @Valid Usuario usuario) throws Exception {
-        Optional<Usuario> usuarioExistente = usuarios.stream()
-                .filter(u -> u.getId().equals(id))
-                .findFirst();
-
-        if (!usuarioExistente.isPresent()) throw new CustomException("Usuario con id:" + id + " no existe para modificar");
-
-        usuarios.removeIf(u -> u.getId().equals(id));
-
-        usuario.setId(id);
-        usuarios.add(usuario);
-
-        return usuario;
-    }
-
-    public void delete(UUID id) throws Exception {
-        Optional<Usuario> usuario = usuarios.stream()
-                .filter(u -> u.getId().equals(id))
-                .findFirst();
-
-        if (!usuario.isPresent()) throw new CustomException("Usuario no existe usuario con id:" + id + " para eliminar");
-
-        usuario.get().setSituacion(Situacion.INACTIVO);
-        usuarios.removeIf(u -> u.getId().equals(id));
-        usuarios.add(usuario.get());
-    }
 
     public UsuarioRepository() {
         this.usuarios = Stream.of(
@@ -95,5 +42,59 @@ public class UsuarioRepository {
                         .situacion(Situacion.ACTIVO)
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Usuario> getAll() {
+        return usuarios.stream()
+                .filter(u -> u.getSituacion().equals(Situacion.ACTIVO))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Usuario> getById(UUID id) {
+        return usuarios.stream()
+                .filter(u -> u.getId().equals(id))
+                .findFirst();
+    }
+
+    @Override
+    public Usuario save(@Valid Usuario entity) throws ApiException {
+        Optional<Usuario> usuarioExistente = usuarios.stream()
+                .filter(u -> u.getId().equals(entity.getId()) ||
+                        u.getLogin().equals(entity.getNombre()))
+                .findFirst();
+
+        if (usuarioExistente.isPresent()) throw new ApiException("Usuario con el mismo nobre o id yá existe");
+
+        entity.setId(UUID.randomUUID());
+        usuarios.add(entity);
+
+        return entity;
+    }
+
+    @Override
+    public Usuario update(UUID id, @Valid Usuario entity) throws ApiException {
+        Optional<Usuario> usuarioExistente = this.getById(id);
+
+        if (!usuarioExistente.isPresent()) throw new ApiException("Usuario con id:" + id + " no existe para modificar");
+
+        usuarios.removeIf(u -> u.getId().equals(id));
+
+        entity.setId(id);
+        usuarios.add(entity);
+
+        return entity;
+    }
+
+    @Override
+    public void delete(UUID id) throws ApiException {
+        Optional<Usuario> usuario = this.getById(id);
+
+        if (!usuario.isPresent()) throw new ApiException("Usuario no existe usuario con id:" + id + " para eliminar");
+
+        usuario.get().setSituacion(Situacion.INACTIVO);
+        usuarios.removeIf(u -> u.getId().equals(id));
+        usuarios.add(usuario.get());
     }
 }

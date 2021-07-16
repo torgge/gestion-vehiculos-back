@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -16,9 +17,11 @@ import java.util.UUID;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class Main {
 
     @JsonProperty(access = Access.READ_ONLY)
+    @EqualsAndHashCode.Include
     private UUID id;
     @JsonProperty(access = Access.READ_ONLY)
     @JsonbDateFormat("dd/MM/yyyy HH:mm:ss ")
