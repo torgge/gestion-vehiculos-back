@@ -15,7 +15,7 @@ import java.util.Date;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Servicio {
+public class Servicio extends Main {
     @NotBlank(message="Usuario no puede ser vacio")
     private Usuario usuario;
     @NotBlank(message="Auto no puede ser vacio")
