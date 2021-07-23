@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
-import javax.validation.ConstraintViolationException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;

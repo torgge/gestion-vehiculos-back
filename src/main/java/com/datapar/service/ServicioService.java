@@ -8,7 +8,6 @@ import org.jboss.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class ServicioService extends CrudService<Servicio> {
     }
 
     @Override
-    public Servicio save(@Valid Servicio entity) throws ApiException, ConstraintViolationException {
+    public Servicio save(@Valid Servicio entity) throws ApiException {
         logger.info("Save Servicio Service!!!");
         Servicio servicio = repository.save(entity);
 

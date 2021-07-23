@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.inject.Inject;
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +30,12 @@ public class CrudService<T extends Main> implements IBaseService<T> {
     }
 
     @Override
-    public T save(@Valid T entity) throws ApiException, ConstraintViolationException {
+    public T save(@Valid T entity) throws ApiException {
         return repository.save(entity);
     }
 
     @Override
-    public T update(UUID id,@Valid T entity) throws ApiException, ConstraintViolationException {
+    public T update(UUID id,@Valid T entity) throws ApiException {
         return repository.update(id, entity);
     }
 
