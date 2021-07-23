@@ -6,6 +6,7 @@ import com.datapar.shared.exception.ApiException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CrudRepository<T extends Main> implements IBaseRepository<T> {
 
-    private List<T> datos;
+    protected List<T> datos;
 
     @Override
     public List<T> getAll() {
@@ -27,7 +28,7 @@ public class CrudRepository<T extends Main> implements IBaseRepository<T> {
     }
 
     @Override
-    public T save(T entity) throws ApiException {
+    public T save(@Valid T entity) throws ApiException {
         Optional<T> dato = this.datos.stream()
                 .filter(u -> u.getId().equals(entity.getId()))
                 .findFirst();
@@ -41,7 +42,7 @@ public class CrudRepository<T extends Main> implements IBaseRepository<T> {
     }
 
     @Override
-    public T update(UUID id, T entity) throws ApiException {
+    public T update(UUID id,@Valid T entity) throws ApiException {
         Optional<T> dato = this.getById(id);
 
         if (dato.isEmpty()) throw new ApiException("Registro con id:" + id + " no existe para modificar");

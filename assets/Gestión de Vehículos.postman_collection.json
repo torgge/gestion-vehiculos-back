@@ -132,6 +132,134 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "SERVICIOS - POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipoServicio\": \"ABASTECIMIENTO\",\n    \"valorServicio\": 245.000,\n    \"descripcion\": \"30 litros de nafta\",\n    \"kmInicial\": 6001.11,\n    \"kmFinal\": 6000.44,\n    \"situacion\": \"ACTIVO\",\n    \"auto\": {\n        \"id\": \"c8618e55-447c-4e7e-c539-c37c2063381c\"\n    },\n    \"usuario\": {\n        \"id\": \"c8618e55-447b-4e7e-b539-b37c2063381c\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/servicios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"servicios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SERVICIOS - GET ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/servicios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"servicios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SERVICIOS PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"situacion\": \"ACTIVO\",\n    \"auto\": {\n        \"id\": \"c8618e55-447c-4e7e-c539-c37c2063381c\"        \n    },\n    \"descripcion\": \"Cambio de oleo\",\n    \"kmFinal\": 3200.0,\n    \"kmInicial\": 301.11,\n    \"tipoServicio\": \"TALLER\",\n    \"usuario\": {\n        \"id\": \"c8618e55-447b-4e7e-b539-b37c2063381c\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/servicios/c29c9596-747b-49bc-9623-52b12fb4100b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"servicios",
+						"c29c9596-747b-49bc-9623-52b12fb4100b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SERVICIOS GET BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/servicios/c29c9596-747b-49bc-9623-52b12fb4100b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"servicios",
+						"c29c9596-747b-49bc-9623-52b12fb4100b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SERVICIOS DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/servicios/c29c9596-747b-49bc-9623-52b12fb4100b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"servicios",
+						"c29c9596-747b-49bc-9623-52b12fb4100b"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

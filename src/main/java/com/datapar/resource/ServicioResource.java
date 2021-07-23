@@ -10,5 +10,4 @@ import javax.ws.rs.core.MediaType;
 @Path("/api/v1/servicios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ServicioResource extends CRUDResource<Servicio> {
-}
+public class ServicioResource extends CrudResource<Servicio> {}

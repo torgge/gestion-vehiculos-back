@@ -7,6 +7,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -16,12 +17,12 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Servicio extends Main {
-    @NotBlank(message="Usuario no puede ser vacio")
+    @NotNull(message="Usuario no puede ser vacio")
     private Usuario usuario;
-    @NotBlank(message="Auto no puede ser vacio")
+    @NotNull(message="Auto no puede ser vacio")
     private Auto auto;
     private TipoServicio tipoServicio;
-    @NotBlank(message="Auto no puede ser vacio")
+    @Min(message="Valor Servicio debe ser mayor que cero", value=0)
     private BigDecimal valorServicio;
     private Date fechaServicio;
     @Min(message="KM inicial no puede ser vacio", value=0)
