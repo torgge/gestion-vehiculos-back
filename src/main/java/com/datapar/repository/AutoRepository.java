@@ -2,7 +2,6 @@ package com.datapar.repository;
 
 import com.datapar.model.Auto;
 import com.datapar.shared.enums.Situacion;
-import com.datapar.shared.exception.ApiException;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Optional;
