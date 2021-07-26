@@ -24,7 +24,7 @@ public class AutoRepository extends CrudRepository<Auto> {
 
         this.persistAndFlush(entity);
 
-        return this.getByChapa(chapa).get();
+        return this.getByChapa(chapa).orElseThrow();
     }
 
     public void deleteByChapa(String chapa) throws ApiException {

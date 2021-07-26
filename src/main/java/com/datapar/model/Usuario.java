@@ -28,9 +28,5 @@ public class Usuario extends Main {
     private String contrasena;
     @NotNull(message="Tipo Usuario no puede ser vacio")
     private TipoUsuario tipoUsuario;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "servicioId", foreignKey=@ForeignKey(name="fk_servicio_usuario"))
-//    @JsonIgnore
-//    private Servicio servicio;
 }
 

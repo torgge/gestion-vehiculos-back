@@ -31,8 +31,4 @@ public class Auto extends Main{
     private Integer anoModelo;
     private Integer anoFabricacion;
     private String descripcion;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "servicioId", foreignKey=@ForeignKey(name="fk_servicio_auto"))
-//    @JsonIgnore
-//    private Servicio servicio;
 }

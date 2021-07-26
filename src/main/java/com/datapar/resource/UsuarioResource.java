@@ -10,8 +10,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/api/v1/usuarios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class UsuarioResource extends CrudResource<Usuario> {
-
-}
+public class UsuarioResource extends CrudResource<Usuario> {}
 
 

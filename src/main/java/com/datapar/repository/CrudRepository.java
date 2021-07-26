@@ -17,13 +17,14 @@ import java.util.UUID;
 public class CrudRepository<T extends Main> implements PanacheRepository<T> {
 
     public List<T> getAll() {
-        return this.find("situacion = :situacion", Parameters.with("situacion", Situacion.ACTIVO))
+        return this.find("situacion = :situacion",
+                Parameters.with("situacion", Situacion.ACTIVO))
                 .list();
     }
 
     public Optional<T> getById(UUID id) {
 
-        if (id == null) return Optional.ofNullable(null);
+        if (id == null) return Optional.empty();
 
         return this.find("id = id", Parameters.with("id", id))
                 .stream()
@@ -50,7 +51,7 @@ public class CrudRepository<T extends Main> implements PanacheRepository<T> {
 
         this.persistAndFlush(entity);
 
-        return this.getById(id).get();
+        return this.getById(id).orElseThrow();
     }
 
     @Transactional
