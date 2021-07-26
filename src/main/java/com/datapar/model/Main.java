@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.json.bind.annotation.JsonbDateFormat;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.util.Date;
 import java.util.UUID;
 
@@ -17,11 +19,13 @@ import java.util.UUID;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@MappedSuperclass
 public abstract class Main {
 
     @JsonProperty(access = Access.READ_ONLY)
     @EqualsAndHashCode.Include
+    @Id
     private UUID id;
     @JsonProperty(access = Access.READ_ONLY)
     @JsonbDateFormat("dd/MM/yyyy HH:mm:ss ")

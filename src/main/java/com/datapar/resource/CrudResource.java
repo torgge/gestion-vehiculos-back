@@ -19,10 +19,10 @@ import java.util.UUID;
 public class CrudResource<T extends Main> {
 
     @Inject
-    private IBaseService<T> service;
+    protected IBaseService<T> service;
 
     @Inject
-    Logger logger;
+    protected Logger logger;
 
     @GET
     public List<T> getAll() {

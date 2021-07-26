@@ -1,7 +1,7 @@
 package com.datapar.service;
 
 import com.datapar.model.Main;
-import com.datapar.repository.IBaseRepository;
+import com.datapar.repository.CrudRepository;
 import com.datapar.shared.exception.ApiException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.UUID;
 public class CrudService<T extends Main> implements IBaseService<T> {
 
     @Inject
-    protected IBaseRepository<T> repository;
+    protected CrudRepository<T> repository;
 
     @Override
     public List<T> getAll() {
